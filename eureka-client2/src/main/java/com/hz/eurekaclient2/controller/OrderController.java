@@ -1,8 +1,12 @@
 package com.hz.eurekaclient2.controller;
 
 import com.hz.eurekaclient2.entity.Order;
+import com.hz.eurekaclient2.entity.User;
 import com.hz.eurekaclient2.service.OrderService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 
@@ -21,6 +25,9 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+    @Resource
+    private RestTemplate restTemplate;
+
     /**
      * 通过主键查询单条数据
      *
@@ -29,7 +36,11 @@ public class OrderController {
      */
     @GetMapping("selectOne")
     public Order selectOne(Long id) {
-        return this.orderService.queryById(id);
+        Order order = this.orderService.queryById(id);
+        // 调用用户服务查询user信息
+        User user = restTemplate.getForObject("http://userservice/user/selectOne?id=" + order.getUserId(), User.class);
+        order.setUser(user);
+        return order;
     }
 
 }
