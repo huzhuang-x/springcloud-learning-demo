@@ -1,7 +1,9 @@
 package com.hz.userservice.controller;
 
+import com.hz.userservice.config.PatternProperties;
 import com.hz.userservice.entity.User;
 import com.hz.userservice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import java.time.format.DateTimeFormatter;
  */
 @RestController
 @RequestMapping("user")
+//@RefreshScope
 public class UserController {
     /**
      * 服务对象
@@ -28,6 +31,9 @@ public class UserController {
 
     @Value("${pattern.dateformat}")
     private String dateformat;
+
+    @Autowired
+    private PatternProperties patternProperties;
 
     /**
      * 通过主键查询单条数据
@@ -43,7 +49,7 @@ public class UserController {
 
     @GetMapping("now")
     public String now() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(patternProperties.getDateFormat()));
     }
 
 }
