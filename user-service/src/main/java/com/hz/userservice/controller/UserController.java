@@ -2,9 +2,14 @@ package com.hz.userservice.controller;
 
 import com.hz.userservice.entity.User;
 import com.hz.userservice.service.UserService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * (User)表控制层
@@ -21,6 +26,9 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Value("${pattern.dateformat}")
+    private String dateformat;
+
     /**
      * 通过主键查询单条数据
      *
@@ -29,7 +37,13 @@ public class UserController {
      */
     @GetMapping("selectOne")
     public User selectOne(Long id) {
+        System.out.println(dateformat);
         return this.userService.queryById(id);
+    }
+
+    @GetMapping("now")
+    public String now() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(dateformat));
     }
 
 }
