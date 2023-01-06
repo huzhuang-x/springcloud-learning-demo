@@ -25,3 +25,8 @@ mybatis:
 #      defaultZone: http://localhost:8001/eureka
 #  server:
 #    enable-self-preservation: false #关闭保护模式
+feign:
+  client:
+    config:
+      default:
+        logger-level: full
