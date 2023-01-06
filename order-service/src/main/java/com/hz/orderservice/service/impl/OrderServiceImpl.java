@@ -1,8 +1,11 @@
 package com.hz.orderservice.service.impl;
 
+import com.hz.orderservice.clients.UserClient;
 import com.hz.orderservice.entity.Order;
 import com.hz.orderservice.dao.OrderDao;
+import com.hz.orderservice.entity.User;
 import com.hz.orderservice.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +22,9 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderDao orderDao;
 
+    @Autowired
+    private UserClient userClient;
+
     /**
      * 通过ID查询单条数据
      *
@@ -27,7 +33,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public Order queryById(Long id) {
-        return this.orderDao.queryById(id);
+        Order order = this.orderDao.queryById(id);
+        // 调用用户服务查询user信息
+        User user = userClient.findById(order.getUserId());
+        order.setUser(user);
+        return order;
     }
 
     /**
