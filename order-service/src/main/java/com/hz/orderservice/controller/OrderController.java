@@ -5,7 +5,6 @@ import com.hz.orderservice.service.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 
@@ -23,9 +22,6 @@ public class OrderController {
      */
     @Resource
     private OrderService orderService;
-
-    @Resource
-    private RestTemplate restTemplate;
 
     /**
      * 通过主键查询单条数据

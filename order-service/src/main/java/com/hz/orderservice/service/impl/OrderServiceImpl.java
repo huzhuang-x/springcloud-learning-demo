@@ -1,9 +1,9 @@
 package com.hz.orderservice.service.impl;
 
-import com.hz.orderservice.clients.UserClient;
-import com.hz.orderservice.entity.Order;
+import com.hz.feignapi.clients.UserClient;
+import com.hz.feignapi.entity.User;
 import com.hz.orderservice.dao.OrderDao;
-import com.hz.orderservice.entity.User;
+import com.hz.orderservice.entity.Order;
 import com.hz.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

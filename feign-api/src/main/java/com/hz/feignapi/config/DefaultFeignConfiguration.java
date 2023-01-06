@@ -1,4 +1,4 @@
-package com.hz.orderservice.config;
+package com.hz.feignapi.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.hz.orderservice.entity;
+package com.hz.feignapi.entity;
 
 import lombok.Data;
 
