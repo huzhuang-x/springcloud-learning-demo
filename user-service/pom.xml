@@ -65,6 +65,11 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <!--引入amqp依赖，包含了rabbitmq实现-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
         <!--        <dependency>
                     <groupId>org.springframework.cloud</groupId>
@@ -74,6 +79,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

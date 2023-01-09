@@ -8,6 +8,12 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud_user?useSSL=false
+  rabbitmq:
+    host: 1.15.237.42
+    port: 5672
+    virtual-host: /
+    username: hz
+    password: 123456
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
